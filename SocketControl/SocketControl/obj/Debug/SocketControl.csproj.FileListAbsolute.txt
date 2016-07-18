@@ -1,0 +1,12 @@
+C:\Users\yye\Desktop\SocketControl\SocketControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\yye\Desktop\SocketControl\SocketControl\obj\Debug\SocketControl.Properties.Resources.resources
+C:\Users\yye\Desktop\SocketControl\SocketControl\obj\Debug\SocketControl.csproj.GenerateResource.Cache
+C:\Users\yye\Desktop\SocketControl\SocketControl\bin\Debug\SocketControl.exe
+C:\Users\yye\Desktop\SocketControl\SocketControl\bin\Debug\SocketControl.pdb
+C:\Users\yye\Desktop\SocketControl\SocketControl\bin\Debug\RobotSocket.dll
+C:\Users\yye\Desktop\SocketControl\SocketControl\bin\Debug\RobotSocket.pdb
+C:\Users\yye\Desktop\SocketControl\SocketControl\obj\Debug\SocketControl.MainForm.resources
+C:\Users\yye\Desktop\SocketControl\SocketControl\obj\Debug\SocketControl.exe
+C:\Users\yye\Desktop\SocketControl\SocketControl\obj\Debug\SocketControl.pdb
+C:\Users\yye\Desktop\通过socket来传送数据给机器人\SocketControl\SocketControl\obj\Debug\SocketControl.exe
+C:\Users\yye\Desktop\通过socket来传送数据给机器人\SocketControl\SocketControl\obj\Debug\SocketControl.pdb

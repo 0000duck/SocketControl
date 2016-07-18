@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="SpeedFilter" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_tr" type="trsf" xsi:type="element" />
+      <Parameter name="x_mDest" type="mdesc" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nDist" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  
+ // DataBase:nSpeedPercent=min(max(0.001,DataBase:nSpeedPercent),100)
+  
+  
+  
+  //调试系数
+  //l_nPercent=2
+  //
+  
+  
+ 
+  
+  
+  
+  
+  
+  x_mDest.decel=x_mDest.accel=max(x_tr.rx,0.1)*1
+  x_mDest.blend=Cartesian
+   // x_mDest.blend=joint
+  x_mDest.reach=x_mDest.leave=max(x_tr.ry,0)
+  x_mDest.tvel=max(x_tr.z,0.1)*1
+  x_mDest.vel=100
+  x_mDest.rvel=99999
+  
+  
+end]]></Code>
+  </Program>
+</Programs>

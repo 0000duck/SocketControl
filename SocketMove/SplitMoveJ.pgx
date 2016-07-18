@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="SplitMoveJ" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_sSLine" type="string" xsi:type="element" />
+      <Parameter name="x_jJ" type="joint" xsi:type="element" use="reference" />
+      <Parameter name="x_trP" type="trsf" xsi:type="element" use="reference" />
+      <Parameter name="x_bCut" type="bool" xsi:type="element" />
+      <Parameter name="x_bRes" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_sChar" type="string" xsi:type="array" size="2" />
+      <Local name="l_nData" type="num" xsi:type="array" size="25" />
+    </Locals>
+    <Code><![CDATA[begin
+  x_bRes=false
+  
+  if x_sSLine==""
+    return
+  endIf
+  
+  x_sSLine=right(x_sSLine,len(x_sSLine)-len("MOVEJ="))
+  
+  //解析每一行
+  l_sChar[0]=","
+  l_sChar[1]="/"
+  
+  call SplitNumS(x_sSLine,l_nData,l_sChar,x_bRes)
+  
+  if !x_bRes
+    return
+  endIf
+  
+  x_jJ.j1=l_nData[0]
+  x_jJ.j2=l_nData[1]
+  x_jJ.j3=l_nData[2]
+  x_jJ.j4=l_nData[3]
+  x_jJ.j5=l_nData[4]
+  x_jJ.j6=l_nData[5]
+  
+  
+  
+  if !x_bCut
+    
+    x_trP.z=l_nData[6]
+    x_trP.rx=l_nData[7]
+  else
+    x_trP.x=l_nData[6]
+    x_trP.y=l_nData[7]
+    x_trP.z=l_nData[8]
+    x_trP.rx=l_nData[9]
+    x_trP.ry=l_nData[10]
+    //x_trP.rz=l_nData[17]
+    
+  endIf
+  
+  
+  
+  
+end]]></Code>
+  </Program>
+</Programs>

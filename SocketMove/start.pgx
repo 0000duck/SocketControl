@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="start">
+    <Code><![CDATA[begin
+  
+  cls()
+  title("通过socket传送数据来实现运动")
+  //初始化
+  taskCreateSync  "safetyCheck",0.008,bOverRun,Safety()
+  clearBuffer(sS)
+  sGetStr=""
+  resetMotion()
+  wait(isPowered())
+  
+  
+  //循环语句
+  while isPowered()
+    
+    sGetStr=sS
+    if find(sGetStr,"MOVEL")>=0
+      call SplitMoveL(sGetStr,trTrsf,trPara,true,bRes)
+      if !bRes
+        popUpMsg("数据不对")
+        return
+      endIf
+      call SpeedFilter(trPara,mRun)
+      link(pPrun,world)
+      pPrun.trsf=trTrsf
+      movel(pPrun,tTool,mRun)
+    endIf
+    
+    if find(sGetStr,"MOVEJ")>=0
+      call SplitMoveJ(sGetStr,jrun,trPara,false,bRes)
+      if !bRes
+        popUpMsg("数据不对")
+        return
+      endIf
+      call SpeedFilter(trPara,mRun)
+      movej(jrun,tTool,mRun)
+    endIf
+    
+    
+    if find(sGetStr,"MOVEC")>=0
+      call SplitMoveC(sGetStr,pPMovec.trsf,trTrsf,trPara,bRes)
+      if !bRes
+        popUpMsg("数据不对")
+        return
+      endIf
+      call SpeedFilter(trPara,mRun)
+      link(pPrun,world)
+      pPrun.trsf=trTrsf
+      link(pPMovec,world)
+      movec(pPMovec,pPrun,tTool,mRun)
+    endIf
+    
+    //进行握手
+    if sGetStr!=""
+      sS="success"
+    endIf
+    
+    
+  endWhile
+  resetMotion()
+  
+  
+  
+end
+
+]]></Code>
+  </Program>
+</Programs>

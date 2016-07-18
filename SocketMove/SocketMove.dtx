@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Data/2">
+  <Datas>
+    <Data name="mNomSpeed" access="private" xsi:type="array" type="mdesc" size="1" />
+    <Data name="sGetStr" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="sS" access="private" xsi:type="array" type="sio" size="1">
+      <Value key="0" link="Socket\ss" />
+    </Data>
+    <Data name="sBuff" access="private" xsi:type="array" type="string" size="1" />
+    <Data name="trTrsf" access="private" xsi:type="array" type="trsf" size="1" />
+    <Data name="trPara" access="private" xsi:type="array" type="trsf" size="1" />
+    <Data name="bRes" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="mRun" access="private" xsi:type="array" type="mdesc" size="1" />
+    <Data name="pPrun" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" fatherId="world[0]" />
+    </Data>
+    <Data name="tTool" access="private" xsi:type="array" type="tool" size="1">
+      <Value key="0" z="100" fatherId="flange[0]" ioLink="valve1" />
+    </Data>
+    <Data name="jrun" access="private" xsi:type="array" type="jointRx" size="1" />
+    <Data name="pPMovec" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" fatherId="world[0]" />
+    </Data>
+    <Data name="pCurrent" access="private" xsi:type="array" type="pointRx" size="1">
+      <Value key="0" fatherId="world[0]" />
+    </Data>
+    <Data name="trSafety" access="private" xsi:type="array" type="trsf" size="1">
+      <Value key="0" x="924.6" y="357.15" z="-147.43" ry="-180" rz="-1.37" />
+    </Data>
+    <Data name="bOverRun" access="private" xsi:type="array" type="bool" size="1" />
+    <Data name="nRobotSpeed" access="private" xsi:type="array" type="num" size="1" />
+  </Datas>
+</Database>

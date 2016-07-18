@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="SplitString" access="public">
+    <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
+      <Parameter name="x_Source" type="string" xsi:type="element" />
+      <Parameter name="x_sDest" type="string" xsi:type="array" use="reference" />
+      <Parameter name="x_sChar" type="string" xsi:type="array" use="reference" />
+      <Parameter name="x_bRes" type="bool" xsi:type="element" use="reference" />
+    </Parameters>
+    <Locals>
+      <Local name="l_nResNum" type="num" xsi:type="array" size="1" />
+      <Local name="l_sBuff" type="string" xsi:type="array" size="1" />
+      <Local name="l_nFlag" type="num" xsi:type="array" size="1" />
+      <Local name="l_nBuff" type="num" xsi:type="array" size="1" />
+      <Local name="l_nIndex" type="num" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  //每个函数头格式
+  //×××××××××××××××××××××××××××××××××××××××××××××××××
+  //函数名：
+  //功能：
+  //参数含义:
+  //使用Addon:
+  //作者：
+  //备注：x_sDest 只能是全局变量，因为用到了resize函数
+  //日期：
+  //×××××××××××××××××××××××××××××××××××××××××××××××××
+
+  x_bRes=false
+  l_nResNum=0
+  resize(x_sDest,1,1)
+  x_sDest=""
+  if x_Source=="" or x_sChar==""
+    return
+  endIf
+
+  l_sBuff=x_Source
+  while true
+    l_nFlag=10000
+    //获得最小标志符序号
+    for l_nIndex=0 to size(x_sChar)-1 step 1
+      l_nBuff=find(l_sBuff,x_sChar[l_nIndex])
+      if l_nBuff>=0 and l_nBuff<l_nFlag
+        l_nFlag=l_nBuff
+      endIf
+    endFor
+
+
+    //里面没有标志符
+    if len(l_sBuff)>=1 and l_nFlag==10000
+      if l_nResNum!=0
+        resize(x_sDest,1,l_nResNum+1)
+      endIf
+      x_sDest[l_nResNum]=l_sBuff
+      x_bRes=true
+      return
+    endIf
+
+    //字符串为空
+    if l_sBuff==""
+      x_bRes=true
+      return
+    endIf
+
+
+    //分开
+    if l_nFlag==0
+      l_sBuff=right(l_sBuff,len(l_sBuff)-1)
+    else
+      if l_nResNum!=0
+        resize(x_sDest,1,l_nResNum+1)
+      endIf
+      x_sDest[l_nResNum]=left(l_sBuff,l_nFlag)
+      l_nResNum=l_nResNum+1
+      l_sBuff=right(l_sBuff,len(l_sBuff)-l_nFlag-1)
+    endIf
+  endWhile
+
+
+end]]></Code>
+  </Program>
+</Programs>

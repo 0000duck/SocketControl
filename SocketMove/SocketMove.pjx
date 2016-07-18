@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://www.staubli.com/robotics/VAL3/Project/3">
+  <Parameters version="s7.8.3" stackSize="5000" millimeterUnit="true" />
+  <Programs>
+    <Program file="Safety.pgx" />
+    <Program file="SpeedFilter.pgx" />
+    <Program file="SplitJoint.pgx" />
+    <Program file="SplitMoveC.pgx" />
+    <Program file="SplitMoveJ.pgx" />
+    <Program file="SplitMoveL.pgx" />
+    <Program file="SplitNumS.pgx" />
+    <Program file="SplitPresetLine.pgx" />
+    <Program file="SplitString.pgx" />
+    <Program file="SplitTrsf.pgx" />
+    <Program file="start.pgx" />
+    <Program file="stop.pgx" />
+  </Programs>
+  <Database>
+    <Data file="SocketMove.dtx" />
+  </Database>
+  <Libraries />
+</Project>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="Safety">
+    <Code><![CDATA[begin
+  
+  //同步任务来实现安全检测
+  while true
+    //获取速度
+    nRobotSpeed=getSpeed(tTool)
+    
+    
+    //判断位置是否超过安全区域
+    pCurrent=here(tTool,world)
+    if distance(pCurrent.trsf,trSafety)>200
+      if isPowered()
+        popUpMsg("超过安全限制")
+        disablePower()
+      endIf
+    endIf
+    delay(0)
+  endWhile
+  
+  
+end
+]]></Code>
+  </Program>
+</Programs>
